@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/ssh-server', '.']
+
+  - name: 'gcr.io/$PROJECT_ID/ssh-server'
+    env:
+      - 'NGROK_AUTHTOKEN=$_NGROK_AUTHTOKEN'
+
+timeout: '1200s'
