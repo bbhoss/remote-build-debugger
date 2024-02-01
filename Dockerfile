@@ -1,5 +1,5 @@
 # Use Debian as the base image
-FROM debian:buster
+FROM debian:bullseye
 
 # Install SSH server
 RUN apt-get update && \
@@ -20,7 +20,7 @@ RUN chmod 600 /root/.ssh/authorized_keys
 
 # Install ngrok
 RUN curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
-    echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | tee /etc/apt/sources.list.d/ngrok.list && \
+    echo "deb https://ngrok-agent.s3.amazonaws.com bullseye main" | tee /etc/apt/sources.list.d/ngrok.list && \
     apt update && apt install ngrok
 
 # Copy entrypoint script into the image
